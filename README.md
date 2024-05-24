@@ -1,12 +1,14 @@
 # Airplane Route Finder
 
-This is a React application that visualizes airplane routes on a map using Leaflet and React Three Fiber. The application allows users to input start and destination coordinates and displays an animated airplane moving along the calculated route.
+This application visualizes airplane routes on a map using React.js and Flask API. The application allows users to input start and destination points and displays the shortest route while taking into account the current weather conditions.
+
+Live Url: [https://airroute.vercel.app](https://airroute.vercel.app/)
 
 ## Features
 
 - Visualize airplane routes on a colorful map
-- Display markers for cities with tooltips
-- Animated airplane model moving along the route
+- Display markers for cities
+- Display the whole route
 - Dynamic route updates based on input coordinates
 - Responsive design for various screen sizes
 
