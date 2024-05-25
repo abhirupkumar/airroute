@@ -48,6 +48,7 @@ const MapWithRoute = ({ routesData }) => {
     const [currentRouteIndex, setCurrentRouteIndex] = useState(0);
     const [isDestReached, setIsDestReached] = useState(false);
     const airportsData = airports["airports"];
+    const [departureTime, setDepartureTime] = useState(Date.now());
 
     useEffect(() => {
         setRoutes(routesData);
@@ -71,7 +72,8 @@ const MapWithRoute = ({ routesData }) => {
                 const distance = calculateDistance(currentRoute.Latitude, currentRoute.Longitude, nextRoute.Latitude, nextRoute.Longitude);
                 const timeInHours = calculateTime(distance, PLANE_SPEED_KMH);
                 const timeInMinutes = timeInHours * 60;
-                if (timeInMinutes <= 15) {
+                const elapsedMinutes = (Date.now() - departureTime) / 60000;
+                if (timeInMinutes - elapsedMinutes <= 15) {
                     try {
                         const fetchedData = await fetch(`https://airnavigation.onrender.com/shortest_path?start=${nextRoute.id}&end=${routes[routes.length - 1].id}&prev=${routes[0].id}`, {
                             method: 'POST',
@@ -87,6 +89,7 @@ const MapWithRoute = ({ routesData }) => {
                         setRoutes(sortedRoutes);
                         setCurrentRouteIndex(0); // Reset index to start from the new route
                         setPlanePosition([nextRoute.Latitude, nextRoute.Longitude]);
+                        setDepartureTime(Date.now());
                     } catch (error) {
                         console.error('Failed to fetch new routes:', error);
                     }
