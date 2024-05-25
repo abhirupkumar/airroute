@@ -75,7 +75,7 @@ const MapWithRoute = ({ routesData }) => {
                 const elapsedMinutes = (Date.now() - departureTime) / 60000;
                 if (timeInMinutes - elapsedMinutes <= 15) {
                     try {
-                        const fetchedData = await fetch(`https://airnavigation.onrender.com/shortest_path?start=${nextRoute.id}&end=${routes[routes.length - 1].id}&prev=${routes[0].id}`, {
+                        const fetchedData = await fetch(`https://f91d-27-131-211-122.ngrok-free.app/shortest_path?start=${nextRoute.id}&end=${routes[routes.length - 1].id}&prev=${routes[0].id}`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
