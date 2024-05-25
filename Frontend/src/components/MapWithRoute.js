@@ -97,7 +97,7 @@ const MapWithRoute = ({ routesData }) => {
                     setTimeout(() => {
                         setCurrentRouteIndex(currentRouteIndex + 1);
                         setPlanePosition([nextRoute.Latitude, nextRoute.Longitude]);
-                    }, timeInMinutes * 60000);
+                    }, (timeInMinutes - elapsedMinutes) * 60000);
                 }
 
                 intervalId = setInterval(() => {
