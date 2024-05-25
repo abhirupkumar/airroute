@@ -25,7 +25,7 @@ export default function App() {
 
   const handleRouteSubmit = async (start, end) => {
     setLoading(true);
-    const response = await fetch(`https://airnavigation.onrender.com/shortest_path?start=${start.id}&end=${end.id}&prev`, {
+    const response = await fetch(`https://f91d-27-131-211-122.ngrok-free.app/shortest_path?start=${start.id}&end=${end.id}&prev`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
